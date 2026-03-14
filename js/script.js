@@ -60,6 +60,26 @@ if (fixedCta && hero) {
 }
 
 /* =========================================
+   Bar Chart Animation (Efficacy Section)
+   ========================================= */
+const efficacyBars = document.querySelectorAll('.efficacy__bar');
+if (efficacyBars.length) {
+  const barObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const bars = entry.target.querySelectorAll('.efficacy__bar');
+        bars.forEach((bar, i) => {
+          setTimeout(() => bar.classList.add('animated'), i * 150);
+        });
+        barObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  const chartWrap = document.querySelector('.efficacy__chart-wrap');
+  if (chartWrap) barObserver.observe(chartWrap);
+}
+
+/* =========================================
    Smooth Scroll for Anchor Links
    ========================================= */
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
