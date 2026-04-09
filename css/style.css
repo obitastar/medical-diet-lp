@@ -273,7 +273,7 @@ sup { font-size: 0.6em; vertical-align: super; }
   background-size: contain;
   background-position: right bottom;
   background-repeat: no-repeat;
-  background-color: #7a2248;
+  background-color: #c44878;
   z-index: 0;
 }
 /* 画像との境界をなめらかにブレンド */
@@ -282,13 +282,48 @@ sup { font-size: 0.6em; vertical-align: super; }
   position: absolute;
   inset: 0;
   background: linear-gradient(to right,
-    #7a2248 0%,
-    #7a2248 35%,
-    rgba(122,34,72,0.72) 52%,
+    #c44878 0%,
+    #c44878 35%,
+    rgba(196,72,120,0.70) 52%,
     transparent 68%
   );
   z-index: 1;
 }
+
+/* =========================================
+   Hero – 桜の花びら
+   ========================================= */
+.hero__petals {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
+}
+.hero__petal {
+  position: absolute;
+  top: -30px;
+  display: block;
+  background: rgba(255, 210, 225, 0.55);
+  border-radius: 80% 0 55% 50% / 55% 0 80% 50%;
+  animation: sakura-fall linear infinite;
+}
+@keyframes sakura-fall {
+  0%   { transform: translateY(0)      rotate(0deg)   translateX(0);    opacity: 0; }
+  6%   { opacity: 0.85; }
+  92%  { opacity: 0.65; }
+  100% { transform: translateY(108vh)  rotate(660deg) translateX(60px); opacity: 0; }
+}
+
+.hero__petal--1 { left:  6%; width: 14px; height: 20px; animation-duration:  9s; animation-delay:  0s;   background: rgba(255,200,220,0.55); }
+.hero__petal--2 { left: 16%; width: 10px; height: 15px; animation-duration: 11s; animation-delay:  2.5s; background: rgba(255,218,230,0.50); }
+.hero__petal--3 { left: 27%; width: 16px; height: 22px; animation-duration:  8s; animation-delay:  1s;   background: rgba(255,190,215,0.60); }
+.hero__petal--4 { left: 40%; width: 12px; height: 17px; animation-duration: 12s; animation-delay:  4s;   background: rgba(255,210,228,0.50); }
+.hero__petal--5 { left: 53%; width: 18px; height: 24px; animation-duration:  9s; animation-delay:  0.5s; background: rgba(255,200,220,0.45); }
+.hero__petal--6 { left: 64%; width: 10px; height: 14px; animation-duration: 10s; animation-delay:  3s;   background: rgba(255,225,235,0.55); }
+.hero__petal--7 { left: 74%; width: 14px; height: 20px; animation-duration:  8s; animation-delay:  5.5s; background: rgba(255,195,215,0.60); }
+.hero__petal--8 { left: 84%; width: 12px; height: 17px; animation-duration: 11s; animation-delay:  1.8s; background: rgba(255,215,230,0.50); }
+.hero__petal--9 { left: 93%; width: 16px; height: 22px; animation-duration: 10s; animation-delay:  7s;   background: rgba(255,205,225,0.55); }
 
 .hero__inner {
   position: relative;
@@ -1438,9 +1473,9 @@ sup { font-size: 0.6em; vertical-align: super; }
   }
   .hero__bg::before {
     background: linear-gradient(to bottom,
-      rgba(110,28,60,0.80) 0%,
-      rgba(110,28,60,0.55) 60%,
-      rgba(110,28,60,0.35) 100%
+      rgba(196,72,120,0.82) 0%,
+      rgba(196,72,120,0.58) 60%,
+      rgba(196,72,120,0.36) 100%
     );
   }
   .hero__cta-group { flex-direction: column; }
