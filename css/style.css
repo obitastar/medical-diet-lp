@@ -11,7 +11,7 @@
   --color-line-hover:    #05b04c;
   --color-bg:            #ffffff;
   --color-bg-alt:        #fef5f8;
-  --color-bg-dark:       #5c1a38;
+  --color-bg-dark:       #3a1024;
   --color-text:          #2d1a24;
   --color-text-light:    #7a6070;
   --color-border:        #f5dde6;
@@ -123,6 +123,10 @@ sup { font-size: 0.6em; vertical-align: super; }
 .section--dark {
   background: var(--color-bg-dark);
   color: var(--color-white);
+}
+/* 薬剤セクションはTOPと同じ桜色 */
+#drug.section--dark {
+  background: #c44878;
 }
 
 /* Section accent line */
