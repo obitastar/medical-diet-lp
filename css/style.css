@@ -1560,7 +1560,7 @@ sup { font-size: 0.6em; vertical-align: super; }
 }
 @media (max-width: 768px) {
   .page-top {
-    bottom: 88px; /* CTAバー高さ(約74px) + 余白 */
+    bottom: 108px; /* CTAバー高さ(約74px) + 余白 */
     right: 14px;
     width: 42px;
     height: 42px;
