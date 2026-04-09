@@ -84,6 +84,18 @@ if (efficacyBars.length) {
    ========================================= */
 const pageTop = document.getElementById('pageTop');
 if (pageTop) {
+  // CTAバーの高さに合わせてbottomを動的に設定
+  const adjustPageTopBottom = () => {
+    const cta = document.getElementById('fixedCta');
+    if (cta && getComputedStyle(cta).display !== 'none') {
+      pageTop.style.bottom = (cta.offsetHeight + 16) + 'px';
+    } else {
+      pageTop.style.bottom = '';
+    }
+  };
+  adjustPageTopBottom();
+  window.addEventListener('resize', adjustPageTopBottom, { passive: true });
+
   window.addEventListener('scroll', () => {
     pageTop.classList.toggle('visible', window.scrollY > 400);
   }, { passive: true });
