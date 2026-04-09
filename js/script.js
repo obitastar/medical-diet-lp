@@ -80,6 +80,19 @@ if (efficacyBars.length) {
 }
 
 /* =========================================
+   Page Top Button
+   ========================================= */
+const pageTop = document.getElementById('pageTop');
+if (pageTop) {
+  window.addEventListener('scroll', () => {
+    pageTop.classList.toggle('visible', window.scrollY > 400);
+  }, { passive: true });
+  pageTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
+
+/* =========================================
    Smooth Scroll for Anchor Links
    ========================================= */
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {

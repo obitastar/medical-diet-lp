@@ -1490,6 +1490,48 @@ sup { font-size: 0.6em; vertical-align: super; }
   .pain__grid { grid-template-columns: 1fr; }
 }
 
+/* =========================================
+   Page Top Button
+   ========================================= */
+.page-top {
+  position: fixed;
+  bottom: 32px;
+  right: 28px;
+  z-index: 190;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  color: var(--color-white);
+  box-shadow: 0 4px 20px rgba(224,96,138,0.4);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(16px);
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+.page-top.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+.page-top:hover {
+  box-shadow: 0 8px 28px rgba(224,96,138,0.55);
+  transform: translateY(-3px);
+}
+@media (max-width: 768px) {
+  .page-top {
+    bottom: 96px; /* スマホ固定CTAバーの上 */
+    right: 16px;
+    width: 42px;
+    height: 42px;
+  }
+}
+
 /* Scrollbar */
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: #f1f5f9; }
