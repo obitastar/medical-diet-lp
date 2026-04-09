@@ -124,10 +124,6 @@ sup { font-size: 0.6em; vertical-align: super; }
   background: var(--color-bg-dark);
   color: var(--color-white);
 }
-/* 薬剤セクションはTOPと同じ桜色 */
-#drug.section--dark {
-  background: #c44878;
-}
 
 /* Section accent line */
 .section-title::after {
