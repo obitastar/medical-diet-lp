@@ -87,8 +87,24 @@ if (pageTop) {
   window.addEventListener('scroll', () => {
     pageTop.classList.toggle('visible', window.scrollY > 400);
   }, { passive: true });
+
   pageTop.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    const start = window.scrollY;
+    const duration = 900; // ms（大きいほどゆっくり）
+    let startTime = null;
+
+    // ease-in-out cubic
+    const ease = t => t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+
+    const step = (timestamp) => {
+      if (!startTime) startTime = timestamp;
+      const elapsed = timestamp - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      window.scrollTo(0, start * (1 - ease(progress)));
+      if (progress < 1) requestAnimationFrame(step);
+    };
+
+    requestAnimationFrame(step);
   });
 }
 

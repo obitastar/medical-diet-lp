@@ -1495,9 +1495,9 @@ sup { font-size: 0.6em; vertical-align: super; }
    ========================================= */
 .page-top {
   position: fixed;
-  bottom: 32px;
+  bottom: 36px;
   right: 28px;
-  z-index: 190;
+  z-index: 210;
   width: 48px;
   height: 48px;
   border-radius: 50%;
@@ -1525,8 +1525,8 @@ sup { font-size: 0.6em; vertical-align: super; }
 }
 @media (max-width: 768px) {
   .page-top {
-    bottom: 96px; /* スマホ固定CTAバーの上 */
-    right: 16px;
+    bottom: 88px; /* CTAバー高さ(約74px) + 余白 */
+    right: 14px;
     width: 42px;
     height: 42px;
   }
