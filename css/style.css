@@ -250,8 +250,10 @@ sup { font-size: 0.6em; vertical-align: super; }
    Marker highlight utility
    ========================================= */
 .marker {
-  background: linear-gradient(transparent 55%, rgba(251,191,36,0.45) 55%);
-  padding-bottom: 2px;
+  color: #f59e0b;
+  background: none;
+  padding: 0;
+  border-radius: 0;
 }
 
 /* =========================================
@@ -371,24 +373,33 @@ sup { font-size: 0.6em; vertical-align: super; }
 .hero__badge svg { color: #ffb8d0; flex-shrink: 0; }
 
 .hero__title {
-  font-size: clamp(40px, 6vw, 72px);
+  font-size: clamp(48px, 7vw, 88px);
   font-weight: 900;
-  line-height: 1.2;
-  color: var(--color-white);
-  margin-bottom: 20px;
+  line-height: 1.15;
+  color: #fff;
+  margin-bottom: 0;
   letter-spacing: -0.03em;
   font-feature-settings: "palt";
-  text-shadow: 0 2px 16px rgba(0,0,0,0.5), 0 1px 4px rgba(0,0,0,0.4);
+  text-shadow: 0 2px 24px rgba(0,0,0,0.7);
 }
 
 .hero__lead {
-  font-size: clamp(20px, 3vw, 32px);
-  font-weight: 700;
-  color: #ffb8d0;
-  line-height: 1.4;
-  margin-bottom: 20px;
-  letter-spacing: -0.01em;
-  text-shadow: 0 2px 12px rgba(0,0,0,0.4);
+  font-size: clamp(17px, 2.2vw, 26px);
+  font-weight: 600;
+  color: rgba(255,255,255,0.92);
+  line-height: 1.6;
+  margin-top: 0;
+  margin-bottom: 40px;
+  letter-spacing: 0.02em;
+  padding-top: 32px;
+  border-top: 1px solid rgba(245,158,11,0.5);
+  text-shadow: 0 1px 8px rgba(0,0,0,0.5);
+}
+.hero__lead strong {
+  color: #f59e0b;
+  font-size: 1.1em;
+  font-weight: 800;
+  letter-spacing: 0.04em;
 }
 
 .hero__sub {
@@ -904,9 +915,30 @@ sup { font-size: 0.6em; vertical-align: super; }
   flex-shrink: 0;
 }
 @media (max-width: 768px) {
-  .price__highlight { padding: 20px 16px; gap: 16px; }
-  .price__highlight-item { padding: 0 16px; }
-  .price__highlight-divider { width: 60px; height: 1px; }
+  /* ハイライトバナー: 3アイテムを縦積みに */
+  .price__highlight {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0;
+    gap: 0;
+  }
+  .price__highlight-item {
+    padding: 16px 20px;
+    text-align: center;
+  }
+  .price__highlight-value { font-size: 26px; }
+  .price__highlight-divider {
+    width: 100%;
+    height: 1px;
+    margin: 0;
+  }
+
+  /* 料金表: padding・フォント縮小 */
+  .price__table { font-size: 13px; }
+  .price__table th { padding: 12px 10px; font-size: 12px; }
+  .price__table td { padding: 12px 10px; }
+  .price__row--highlight .price__amount { font-size: 16px; }
+  .price__amount { font-size: 14px; }
 }
 
 .price__notes {
@@ -1106,7 +1138,7 @@ sup { font-size: 0.6em; vertical-align: super; }
   content: '';
   position: absolute;
   inset: 0;
-  background-image: url('../images/doctor-smiling.jpg');
+  background-image: url('../images/clinic-entrance.jpg');
   background-size: cover;
   background-position: center 20%;
   opacity: 0.08;
@@ -1334,28 +1366,28 @@ sup { font-size: 0.6em; vertical-align: super; }
   font-size: 14px;
   margin-bottom: 12px;
 }
-.online__hours-table tr:first-child td {
-  text-align: center;
+.online__hours-table tr {
+  border-bottom: 1px solid rgba(14,165,233,0.12);
+}
+.online__hours-table tr:last-child {
+  border-bottom: none;
+}
+.online__hours-table td {
+  padding: 10px 8px;
+  vertical-align: middle;
+}
+.online__hours-table td:first-child {
   font-weight: 700;
   color: #475569;
-  padding: 8px 6px 6px;
   font-size: 13px;
+  width: 5em;
 }
-.online__hours-table tr:last-child td {
-  text-align: center;
-  padding: 10px 6px;
-  border-radius: 6px;
-}
-.online__hours-table tr:last-child td:first-child {
-  font-weight: 600;
-  color: #1e293b;
-  text-align: left;
-  font-size: 13px;
-}
-.online__hours-table tr:last-child td:not(:first-child) {
+.online__hours-table td:last-child {
   font-weight: 700;
   color: #0284c7;
   background: rgba(14,165,233,0.06);
+  border-radius: 6px;
+  text-align: center;
 }
 .online__hours-table .hours-closed {
   color: #94a3b8 !important;
@@ -1449,13 +1481,16 @@ sup { font-size: 0.6em; vertical-align: super; }
   .pain__side-img { display: none; }
   .pain__grid { grid-template-columns: repeat(2, 1fr); }
   .reasons__grid { grid-template-columns: repeat(2, 1fr); }
-  .drug__header-layout { grid-template-columns: 1fr; }
-  .drug__side-img-wrap { display: none; }
 }
 
 @media (max-width: 768px) {
   .section { padding: 64px 0; }
   .section-header { margin-bottom: 40px; }
+
+  .section-title {
+    font-size: clamp(17px, 5vw, 22px);
+    overflow-wrap: break-word;
+  }
 
   .pc-only { display: none; }
   .sp-only { display: inline; }
@@ -1472,14 +1507,16 @@ sup { font-size: 0.6em; vertical-align: super; }
     background-color: transparent;
   }
   .hero__bg::before {
-    background: linear-gradient(to bottom,
-      rgba(196,72,120,0.82) 0%,
-      rgba(196,72,120,0.58) 60%,
-      rgba(196,72,120,0.36) 100%
+    background: linear-gradient(to right,
+      rgba(196,72,120,0.72) 0%,
+      rgba(196,72,120,0.45) 38%,
+      rgba(196,72,120,0.08) 60%,
+      transparent 75%
     );
   }
   .hero__cta-group { flex-direction: column; }
   .hero__cta-group .btn { width: 100%; }
+  .hero__scroll { display: none; }
 
   .pain__layout { grid-template-columns: 1fr; }
   .pain__side-img { display: none; }
@@ -1492,8 +1529,13 @@ sup { font-size: 0.6em; vertical-align: super; }
   }
   .solution__compare-vs { text-align: center; padding: 8px 0; }
 
-  .drug__grid { grid-template-columns: 1fr; }
-  .drug__compare-grid { grid-template-columns: 1fr; }
+  /* Drug section */
+  .drug__banner { flex-direction: column; align-items: flex-start; padding: 16px 18px; gap: 10px; }
+  .drug__compare-col { padding: 20px 16px; }
+  .drug__compare-title { font-size: 15px; }
+  .drug__grid { grid-template-columns: 1fr; gap: 16px; }
+  .drug__compare-grid { grid-template-columns: 1fr; gap: 14px; }
+  .drug__card { padding: 24px 20px; }
 
   .reasons__grid { grid-template-columns: 1fr; }
 
@@ -1891,12 +1933,24 @@ sup { font-size: 0.6em; vertical-align: super; }
    ========================================= */
 .drug__header-layout {
   display: grid;
-  grid-template-columns: 1fr 320px;
-  gap: 48px;
-  align-items: center;
+  grid-template-columns: 1fr 300px;
+  column-gap: 48px;
+  row-gap: 20px;
+  align-items: start;
   margin-bottom: 48px;
 }
+.drug__header-title-block {
+  /* grid col1 row1 (auto) */
+}
+.drug__header-desc {
+  /* grid col1 row2 (auto) */
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.75;
+}
 .drug__side-img-wrap {
+  grid-column: 2;
+  grid-row: 1 / span 2;
   border-radius: var(--radius-lg);
   display: flex;
   align-items: center;
@@ -1999,11 +2053,38 @@ sup { font-size: 0.6em; vertical-align: super; }
 
 /* =========================================
    Responsive additions
+   (ベーススタイルより後に定義されたコンポーネントの
+    レスポンシブは必ずここへ書く)
    ========================================= */
 @media (max-width: 1024px) {
+  /* Mechanism */
   .mechanism__grid { grid-template-columns: 1fr; }
   .mechanism__arrow { transform: rotate(90deg); margin: 0 auto; }
+
+  /* Drug header: タイトル → 画像 → 説明文 の縦並び */
+  .drug__header-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .drug__side-img-wrap {
+    display: flex;
+    justify-content: center;
+    grid-column: auto;
+    grid-row: auto;
+  }
+  .drug__side-img {
+    max-height: 240px;
+    width: auto;
+  }
 }
+
+@media (max-width: 768px) {
+  .drug__header-layout { gap: 16px; }
+  .drug__side-img { max-height: 200px; }
+  .drug__header-desc { font-size: 14px; }
+}
+
 @media (max-width: 768px) {
   .trust-strip__inner { justify-content: flex-start; padding: 0 16px; }
   .doctor__inner { grid-template-columns: 1fr; }
@@ -2012,6 +2093,51 @@ sup { font-size: 0.6em; vertical-align: super; }
   .mechanism__grid { gap: 12px; }
   .access__photos { grid-template-columns: 1fr; }
   .access__photo { height: 160px; }
+
+  /* Efficacy chart: 横スクロール対応 */
+  .efficacy__chart-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 8px;
+  }
+  .efficacy__chart { min-width: 340px; }
+
+  /* Highlight cards: 数値（左固定）| 説明（右）の水平レイアウト */
+  .efficacy__highlights {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .efficacy__highlight {
+    display: flex;
+    align-items: center;
+    padding: 14px 16px;
+    text-align: left;
+  }
+  .efficacy__highlight-num {
+    flex: 0 0 112px;
+    text-align: center;
+    margin-bottom: 0;
+    font-size: 12px;
+    padding-right: 16px;
+    border-right: 1px solid rgba(0, 0, 0, 0.08);
+  }
+  .efficacy__highlight--main .efficacy__highlight-num {
+    border-right-color: rgba(255, 255, 255, 0.22);
+  }
+  .efficacy__highlight-num em {
+    font-size: 26px;
+    display: block;
+    line-height: 1.1;
+    margin: 2px 0;
+  }
+  .efficacy__highlight-desc {
+    flex: 1;
+    padding-left: 16px;
+    font-size: 12px;
+    line-height: 1.55;
+    text-align: left;
+  }
+  .efficacy__highlight-desc br { display: none; }
 }
 
 .access__hours-table .hours-closed { background: #f1f5f9; color: #94a3b8; }
